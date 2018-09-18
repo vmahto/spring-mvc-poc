@@ -8,12 +8,12 @@
 
     <context:annotation-config />
 
-   <!--  <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 
         <property name="prefix" value="/jsp/" />
 
         <property name="suffix" value=".jsp" />  
 
-    </bean>-->
+    </bean>
 
 </beans>

@@ -4,9 +4,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Docker-Demo</title>
+<title>Spring-MVC-POC</title>
 </head>
 <body>
 <h2>Hello World!</h2>
+<h3><a href="studentform.jsp">Student Registration Link</a></h3>
 </body>
 </html>

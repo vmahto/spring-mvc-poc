@@ -4,11 +4,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class StudentRegisterationController {
+public class HelloController {
 
 	@RequestMapping(value = "/hii")
 	public String sayHello() {
 		System.out.println("hii in controller");
 		return "Heloo from Controller";
 	}
+	
 }

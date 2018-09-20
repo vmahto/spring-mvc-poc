@@ -34,5 +34,6 @@
 					<td>${student.getContactNo()}</td>
 				</tr></table>
 <h3><a href="studentform.jsp">Add New Student</a></h3>
+<h3><a href="./showStudnets">Display Student List</a></h3>
 </body>
 </html>

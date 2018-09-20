@@ -4,7 +4,7 @@
 
     <!-- <import resource="classpath:jbr/config/user-beans.xml" /> -->
 
-    <context:component-scan base-package="com.vm.spring.mvc.poc.controller" />
+    <context:component-scan base-package="com.vm.spring.mvc.poc" />
 
     <context:annotation-config />
 

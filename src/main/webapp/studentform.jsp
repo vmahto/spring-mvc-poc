@@ -11,11 +11,11 @@
 			<table style="with: 50%">
 				<tr>
 					<td>First Name</td>
-					<td><input type="text" name="first_name" /></td>
+					<td><input type="text" name="fname" /></td>
 				</tr>
 				<tr>
 					<td>Last Name</td>
-					<td><input type="text" name="last_name" /></td>
+					<td><input type="text" name="lname" /></td>
 				</tr>
 				<tr>
 					<td>UserName</td>

@@ -33,9 +33,10 @@ public class StudentSvc implements IStudentSvc{
 	}
 
 	@Override
-	public Student addStudent(Student student) {
+	public int addStudent(Student student) {
 		i++;
-		return studentMap.put(i, student);
+		studentMap.put(i, student);
+		return i;
 	}
 
 }

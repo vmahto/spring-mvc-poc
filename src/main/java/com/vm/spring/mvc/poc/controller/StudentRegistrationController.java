@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -21,8 +22,12 @@ public class StudentRegistrationController {
 	public ModelAndView multiMappingMethod() {
 		
 		displayStudent();
+		Student student = null;
+		  if(studentSvc.getStudentList().size() > 0) {
+			  student = studentSvc.getStudentList().get(0);
+		  }
 		ModelAndView modelAndView = new ModelAndView();
-		
+		modelAndView.addObject(student);
 		modelAndView.setViewName("studentDisplay");
 		return modelAndView;
 	}
@@ -82,19 +87,21 @@ public class StudentRegistrationController {
 	}*/
 	
 	@RequestMapping(value = "/addStudent")
-	@GetMapping(value = "/addStudent")
+//	@GetMapping(path = "/addStudent")
 	public ModelAndView addStudent(@ModelAttribute("student") Student student) {
 	
-		studentSvc.addStudent(student);
-		
+		int id = studentSvc.addStudent(student);
+		System.out.println("------------"+id);
 		displayStudent();
 		
 		ModelAndView modelAndView = new ModelAndView();
-		
+		modelAndView.addObject(student);
 		modelAndView.setViewName("studentAddSuccess");
 		
 		return modelAndView;
 	}
+	
+	
 	
 	private void displayStudent(){
 		System.out.println(" ********************All Students  *********************");
@@ -113,7 +120,7 @@ public class StudentRegistrationController {
 	 * We may require to get some dto from service then transfer it to view 
 	 * for every request. Here It automatically add  this dto to Model object.
 	 * */
-	  @ModelAttribute("student")
+	/*  @ModelAttribute("student")
 	  public Student populateUser() {
 		
 		  Student student = null;
@@ -121,15 +128,38 @@ public class StudentRegistrationController {
 			  student = studentSvc.getStudentList().get(0);
 		  }
 	    return student;
-	  }
+	  }*/
 	
-	@GetMapping(value = "/deleteStudnet/{id}")
+//	@GetMapping(value = "/deleteStudent")
+	/*@RequestMapping(value = "/deleteStudent")
 	 public ModelAndView deleteStudent(@RequestParam("id") int id) {
 		
 		int studentId = studentSvc.deleteStudent(id);
 		System.out.println("******************Studnet Deleted *********ID::"+studentId);
 		displayStudent();
 		ModelAndView modelAndView = new ModelAndView();
+		Student student = null;
+		  if(studentSvc.getStudentList().size() > 0) {
+			  student = studentSvc.getStudentList().get(0);
+			  modelAndView.addObject(student);
+		  }
+		
+		modelAndView.setViewName("studentDisplay");
+		return modelAndView;
+	 }*/
+	
+	@RequestMapping(value = "/deleteStudent/{id}")
+	 public ModelAndView deleteStudent(@PathVariable("id") int id) {
+		
+		int studentId = studentSvc.deleteStudent(id);
+		System.out.println("******************Studnet Deleted *********ID::"+studentId);
+		displayStudent();
+		ModelAndView modelAndView = new ModelAndView();
+		Student student = null;
+		  if(studentSvc.getStudentList().size() > 0) {
+			  student = studentSvc.getStudentList().get(0);
+			  modelAndView.addObject(student);
+		  }
 		
 		modelAndView.setViewName("studentDisplay");
 		return modelAndView;

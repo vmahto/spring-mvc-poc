@@ -8,5 +8,5 @@ public interface IStudentSvc {
 
 	List<Student> getStudentList();
 	int deleteStudent(int studentId);
-	Student addStudent(Student student);
+	 int addStudent(Student student);
 }

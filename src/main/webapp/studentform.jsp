@@ -34,5 +34,7 @@
 					<td><input type="text" name="contactNo" /></td>
 				</tr></table>
 			<input type="submit" value="Submit" /></form>
+		<h3><a href="deleteStudent/1">Delete Studnet Id 1</a></h3>
+		<h3><a href="./showStudnets">Display Student List</a></h3>
 </body>
 </html>

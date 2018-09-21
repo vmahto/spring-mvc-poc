@@ -2,8 +2,10 @@ package com.vm.spring.mvc.poc.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.vm.spring.mvc.poc.model.Student;
@@ -16,9 +18,13 @@ public class StudentRegistrationController {
 	private IStudentSvc studentSvc;
 	
 	@RequestMapping(value = {"/showStudnets", "/addStudent/showStudents"})
-	public void multiMappingMethod() {
+	public ModelAndView multiMappingMethod() {
 		
 		displayStudent();
+		ModelAndView modelAndView = new ModelAndView();
+		
+		modelAndView.setViewName("studentDisplay");
+		return modelAndView;
 	}
 	
 	/*@RequestMapping(value = "/addStudent")
@@ -61,7 +67,22 @@ public class StudentRegistrationController {
 		this.studentSvc = studnetSvc;
 	}
 
+	/*@RequestMapping(value = "/addStudent")
+	public ModelAndView addStudent(@ModelAttribute("student") Student student) {
+	
+		studentSvc.addStudent(student);
+		
+		displayStudent();
+		
+		ModelAndView modelAndView = new ModelAndView();
+		
+		modelAndView.setViewName("studentAddSuccess");
+		
+		return modelAndView;
+	}*/
+	
 	@RequestMapping(value = "/addStudent")
+	@GetMapping(value = "/addStudent")
 	public ModelAndView addStudent(@ModelAttribute("student") Student student) {
 	
 		studentSvc.addStudent(student);
@@ -78,10 +99,10 @@ public class StudentRegistrationController {
 	private void displayStudent(){
 		System.out.println(" ********************All Students  *********************");
 		
-		studentSvc.getStudentList().forEach(student -> System.out.print(student));
-		/*for (Student student : studentSvc.getStudentList()) {
+		//studentSvc.getStudentList().forEach(student -> System.out.print(student));
+		for (Student student : studentSvc.getStudentList()) {
 			System.out.println(student);
-		}*/
+		}
 		System.out.println(studentSvc.getStudentList());
 		
 		System.out.println("*******************************************");
@@ -92,10 +113,26 @@ public class StudentRegistrationController {
 	 * We may require to get some dto from service then transfer it to view 
 	 * for every request. Here It automatically add  this dto to Model object.
 	 * */
-	@ModelAttribute("student")
+	  @ModelAttribute("student")
 	  public Student populateUser() {
-		Student student = new Student();
-		student.setFname("Test");
+		
+		  Student student = null;
+		  if(studentSvc.getStudentList().size() > 0) {
+			  student = studentSvc.getStudentList().get(0);
+		  }
 	    return student;
 	  }
+	
+	@GetMapping(value = "/deleteStudnet/{id}")
+	 public ModelAndView deleteStudent(@RequestParam("id") int id) {
+		
+		int studentId = studentSvc.deleteStudent(id);
+		System.out.println("******************Studnet Deleted *********ID::"+studentId);
+		displayStudent();
+		ModelAndView modelAndView = new ModelAndView();
+		
+		modelAndView.setViewName("studentDisplay");
+		return modelAndView;
+	 }
+	
 }

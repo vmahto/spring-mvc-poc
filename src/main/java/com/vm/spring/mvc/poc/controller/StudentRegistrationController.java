@@ -152,7 +152,7 @@ public class StudentRegistrationController {
 	 public ModelAndView deleteStudent(@PathVariable("id") int id) {
 		
 		int studentId = studentSvc.deleteStudent(id);
-		System.out.println("******************Studnet Deleted *********ID::"+studentId);
+		System.out.println("******************Test Push Studnet Deleted *********ID::"+studentId);
 		displayStudent();
 		ModelAndView modelAndView = new ModelAndView();
 		Student student = null;

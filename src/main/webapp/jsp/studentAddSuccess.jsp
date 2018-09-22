@@ -7,6 +7,11 @@
 <title>Spring-MVC-POC</title>
 </head>
 <body>
+<div class="success">
+		Confirmation message : ${success}
+		<br>
+		We have also sent you a confirmation mail to your email address : ${student.getFname()}.
+	</div>
 <h2> <span style="color: green;">Student Added Successfully</span></h2>
 <table style="with: 50%">
 				<tr>
@@ -33,7 +38,7 @@
 					<td>Contact No: </td>
 					<td>${student.getContactNo()}</td>
 				</tr></table>
-<h3><a href="studentform.jsp">Add New Student</a></h3>
+<h3><a href="./">Add New Student</a></h3>
 <h3><a href="./showStudnets">Display Student List</a></h3>
 </body>
 </html>

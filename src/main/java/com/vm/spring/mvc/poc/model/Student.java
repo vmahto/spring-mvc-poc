@@ -1,12 +1,20 @@
 package com.vm.spring.mvc.poc.model;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 public class Student {
 
+	@Size(min=3, max=30)
 	private String fname;
+	
 	private String lname;
 	private String username;
 	private String password;
-	private String address;
+	
+	@NotNull
+	private Address address;
+	
 	private String contactNo;
 	
 	
@@ -34,10 +42,10 @@ public class Student {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public String getAddress() {
+	public Address getAddress() {
 		return address;
 	}
-	public void setAddress(String address) {
+	public void setAddress(Address address) {
 		this.address = address;
 	}
 	public String getContactNo() {
@@ -46,23 +54,36 @@ public class Student {
 	public void setContactNo(String contactNo) {
 		this.contactNo = contactNo;
 	}
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
 	@Override
 	public String toString() {
-		return "Student [fname=" + fname + ", lname=" + lname + ", username=" + username + ", password=" + password
-				+ ", address=" + address + ", contactNo=" + contactNo + "]";
+		return "Student [fname=" + fname + ", lname=" + lname + ", username="
+				+ username + ", password=" + password + ", address=" + address
+				+ ", contactNo=" + contactNo + "]";
 	}
+	/* (non-Javadoc)
+	 * @see java.lang.Object#hashCode()
+	 */
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((address == null) ? 0 : address.hashCode());
-		result = prime * result + ((contactNo == null) ? 0 : contactNo.hashCode());
+		result = prime * result
+				+ ((contactNo == null) ? 0 : contactNo.hashCode());
 		result = prime * result + ((fname == null) ? 0 : fname.hashCode());
 		result = prime * result + ((lname == null) ? 0 : lname.hashCode());
-		result = prime * result + ((password == null) ? 0 : password.hashCode());
-		result = prime * result + ((username == null) ? 0 : username.hashCode());
+		result = prime * result
+				+ ((password == null) ? 0 : password.hashCode());
+		result = prime * result
+				+ ((username == null) ? 0 : username.hashCode());
 		return result;
 	}
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)

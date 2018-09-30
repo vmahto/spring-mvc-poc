@@ -21,7 +21,7 @@ public class StudentRegistrationController {
 	@Autowired
 	private IStudentSvc studentSvc;
 
-	@RequestMapping(method = RequestMethod.GET)
+	@RequestMapping(value = "/studentregpage", method = RequestMethod.GET)
 	public String studnetIndexpage(ModelMap model) {
 		Student student = new Student();
 		model.addAttribute("studentAdd", student);
@@ -120,24 +120,25 @@ public class StudentRegistrationController {
 		return modelAndView;
 	}*/
 	
-	@RequestMapping(method = RequestMethod.POST)
-	// @GetMapping(path = "/addStudent")
+	@RequestMapping(value = "/addStudent", method = RequestMethod.POST)
+//	 @GetMapping(path = "/addStudent")
 	public String addStudent(@Valid Student studentAdd,
 			BindingResult result, ModelMap model) {
 
 		if (result.hasErrors()) {
 
 			System.out.println("*********************** Eroor********************");
-		
-			return  "studentAddError";
+			model.addAttribute("eroor", "please fill require fields");
 
-		} 
+			throw new NullPointerException();
+		} else {
 			int id = studentSvc.addStudent(studentAdd);
 			System.out.println("------------" + id);
 			displayStudent();
 
 			model.addAttribute("success", "Dear " + studentAdd.getFname()
 					+ " , your Registration completed successfully");
+		}
 		return "studentAddSuccess";
 	}
 

@@ -33,7 +33,7 @@
 					<td>Contact No: </td>
 					<td>${student.getContactNo()}</td>
 				</tr></table>
-<h3><a href="./">Add New Student</a></h3>
+<h3><a href="./studentregpage">Add New Student</a></h3>
 
 </body>
 </html>

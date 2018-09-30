@@ -7,7 +7,7 @@
 <title>Spring-MVC-POC</title>
 </head>
 <body>
-<h2>Hello World!</h2>
-<h3><a href="studentform.jsp">Student Registration Link</a></h3>
+<h2>Unknown Error Occur on Server</h2>
+<h3><a href="./">Student Registration Link</a></h3>
 </body>
 </html>

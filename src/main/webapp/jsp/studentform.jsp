@@ -23,8 +23,15 @@
 </style>
 </head>
 <body>
-<!--<form action="addStudent" method="post">-->
-<form:form method="POST" commandName="studentAdd" >
+<!--<c:url value="/logout" var="logoutUrl" />
+<form id="logout" action="${logoutUrl}" method="post" >
+  <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+</form>
+<c:if test="${pageContext.request.userPrincipal.name != null}">
+	<a href="javascript:document.getElementById('logout').submit()">Logout</a>
+</c:if>-->
+<form action="addStudent" method="post">
+<!--<form:form method="POST" commandName="studentAdd" >-->
 		<form:errors path="*" cssClass="errorblock" element="div" /> 
 			<table style="with: 50%">
 				<tr>
@@ -70,6 +77,7 @@
 				</table>
 			<input type="submit" value="Submit" /></form:form>
 		<h3><a href="deleteStudent?id=1">Delete Studnet Id 1</a></h3>
+		<h3><a href="login/logout">Logout</a></h3>
 		<h3><a href="./showStudnets">Display Student List</a></h3>
 </body>
 </html>

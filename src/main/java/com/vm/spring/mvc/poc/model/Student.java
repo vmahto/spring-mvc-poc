@@ -12,7 +12,7 @@ public class Student {
 	private String username;
 	private String password;
 	
-	@NotNull
+//	@NotNull
 	private Address address;
 	
 	private String contactNo;
